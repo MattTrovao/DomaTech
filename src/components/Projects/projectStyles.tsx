@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ProjectCard = styled.div`
   width: 100%;
   height:100%;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   display: grid;
   grid-template-columns: 1fr 40%;
   gap: 1rem;
@@ -57,13 +57,19 @@ export const ProjectTech = styled.ul`
       margin: 0 1rem;
       color: ${props => props.theme.COLORS.WHITE};
     }
-    &:nth-child(2n + 1){
+    &:nth-child(2n){
       color: ${props => props.theme.COLORS.YELLOW};
     }
+
+    &:first-of-type,
     &:last-of-type{
       &:after{
         display: none;
       }
+    }
+
+    &:first-of-type{
+      margin-right: 10px;
     }
   }
 `
@@ -101,7 +107,7 @@ export const ProjectDesc = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    padding: 0 3rem;
+    padding: 1rem .5rem;
   }
 `
 

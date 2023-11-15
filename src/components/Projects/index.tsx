@@ -1,3 +1,5 @@
+import { ProjectCard, ProjectCompany, ProjectDesc, ProjectName, ProjectCover, ProjectTech, ProjectLink } from './projectStyles';
+
 import { useEffect, useState } from 'react'
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,7 +13,6 @@ import defaultCover from '../../assets/defaultCover.jpg'
 
 import { ProjectData } from '../../@types/project';
 
-
 //Firebase
 import { initializeApp } from "firebase/app";
 import {
@@ -19,8 +20,12 @@ import {
   collection,
   getDocs,
 } from "firebase/firestore";
-import { ProjectCard, ProjectCompany, ProjectDesc, ProjectName, ProjectCover, ProjectTech, ProjectLink } from './projectStyles';
 
+/*
+* De acordo com a documentação oficial (https://firebase.google.com/docs/database/security?hl=pt-br)
+* não existe problemas em mostrar os dados abaixo, visto que as configurações de segurança
+* são realizadas diretamente no painel do Firebase
+*/
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyCqgQPeKJN8fLA1dQXCaiOr1-Yxof7CNv8",
   authDomain: "tb-2023-152a9.firebaseapp.com",
@@ -49,11 +54,9 @@ export const Projects = () => {
   return (
     <Swiper
       slidesPerView={1}
-      spaceBetween={0}
+      spaceBetween={10}
       navigation={true}
-      loop={true}
       modules={[Navigation]}
-      className="projectsSwiper"
     >
       {loaded ? (
         <>
@@ -97,8 +100,8 @@ export const Projects = () => {
                       ))}
                     </>
 
-                    <p className="caption">TAGS:</p>
                     <ProjectTech>
+                      <li>Tags: </li>
                       {project.tecs.map((item: string, index: number) => (
                         <li key={index}>{item}</li>
                       ))}

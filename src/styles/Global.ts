@@ -19,7 +19,7 @@ html,body{ background: ${props => props.theme.COLORS.BLACK}; overflow: hidden }
   gap: 5vh;
 }
 
-
+// Fonts
 .txtYellow { color: ${props => props.theme.COLORS.YELLOW}; }
 .txtBrown { color: ${props => props.theme.COLORS.BROWN}; }
 .txtLBrown { color: ${props => props.theme.COLORS.L_BROWN}; }
@@ -50,6 +50,7 @@ p,li {
 
 span { font-family: inherit}
 
+// Swiper Buttons
 .swiper-button-next,
 .swiper-button-prev{
   width: 35px;
@@ -70,6 +71,30 @@ span { font-family: inherit}
   }
 }
 
+// Keyframes
+@keyframes animeDown {
+  0%,100%{
+    top: 20%;
+  }
+  50%{
+    top: 80%;
+    transform: scale(3) rotate(360deg);
+  }
+}
+
+@keyframes turnCircle {
+  0%,100%{
+    border-radius: 0;
+    border-color: ${props => props.theme.COLORS.WHITE};
+  }
+
+  50%{
+    border-radius: 50%;
+    border-color: ${props => props.theme.COLORS.YELLOW};
+    transform: rotate(-360deg);
+  }
+}
+
 // Media Querys
 @media only screen and (max-width: 1300px) {
   h1 { font-size: 1.5rem; }
@@ -78,6 +103,16 @@ span { font-family: inherit}
   h4 { font-size: 1.2rem; }
   h5 { font-size: 1.1rem; }
   p,li { font-size: .8rem;}
+
+  @keyframes animeDown {
+    0%,100%{
+      top: 20%;
+    }
+    50%{
+      top: 80%;
+      transform: scale(2) rotate(360deg);
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -85,7 +120,7 @@ span { font-family: inherit}
 
   .swiper-button-next,
   .swiper-button-prev{
-    top: 25%;
+    top: 15%;
 
     &:hover{
       box-shadow: 0 0 4px 4px ${props => props.theme.COLORS.YELLOW};
@@ -97,6 +132,16 @@ span { font-family: inherit}
   }
   .swiper-button-prev {
     left: 2%;
+  }
+
+  @keyframes animeDown {
+    0%,100%{
+      top: 20%;
+    }
+    50%{
+      top: 80%;
+      transform: scale(1.4) rotate(360deg);
+    }
   }
 }
 `
