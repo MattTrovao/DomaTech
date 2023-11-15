@@ -6,5 +6,10 @@ export const defaultTheme = {
     GREEN   : '#94A298',
     BLACK   : '#1A1A1C',
     WHITE   : '#F1F1F1',
+  },
+
+  WEIGHT:{
+    TITLE: 400,
+    TEXT: 300,
   }
 }
