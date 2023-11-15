@@ -50,20 +50,53 @@ p,li {
 
 span { font-family: inherit}
 
-.flex{
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+.swiper-button-next,
+.swiper-button-prev{
+  width: 35px;
+  height: 35px;
+  background: ${props => props.theme.COLORS.WHITE};
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all ease-in-out .4s;
+
+  &:hover{
+    box-shadow: 0 0 8px 4px ${props => props.theme.COLORS.YELLOW};
+  }
+
+  &::after{
+    color: ${props => props.theme.COLORS.BLACK};
+    font-size: 1rem;
+  }
 }
 
 // Media Querys
-@media only screen and (max-width: 600px) {
-  html,body{ overflow: auto; }
-
+@media only screen and (max-width: 1300px) {
   h1 { font-size: 1.5rem; }
   h2 { font-size: 1.4rem; }
   h3 { font-size: 1.3rem; }
   h4 { font-size: 1.2rem; }
   h5 { font-size: 1.1rem; }
+  p,li { font-size: .8rem;}
+}
+
+@media only screen and (max-width: 600px) {
+  html,body{ overflow: auto; }
+
+  .swiper-button-next,
+  .swiper-button-prev{
+    top: 25%;
+
+    &:hover{
+      box-shadow: 0 0 4px 4px ${props => props.theme.COLORS.YELLOW};
+    }
+  }
+
+  .swiper-button-next {
+    right: 2%;
+  }
+  .swiper-button-prev {
+    left: 2%;
+  }
 }
 `

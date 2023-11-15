@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.section`
   scroll-snap-align: start;
-  width: 95vw;
+  width: 100%;
   height: 100vh;
-  padding: 100px 2rem;
+  padding: 90px 2rem;
 
   @media only screen and (max-width: 600px) {
     height: unset;

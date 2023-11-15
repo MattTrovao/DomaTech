@@ -5,6 +5,13 @@ import { Navigation } from "swiper/modules";
 import 'swiper/css';
 import "swiper/css/navigation";
 
+import { ReactSVG } from "react-svg"
+import Arrow from '../../assets/Icons/Arrow.svg'
+import defaultCover from '../../assets/defaultCover.jpg'
+
+import { ProjectData } from '../../@types/project';
+
+
 //Firebase
 import { initializeApp } from "firebase/app";
 import {
@@ -12,7 +19,7 @@ import {
   collection,
   getDocs,
 } from "firebase/firestore";
-import { ProjectCard, ProjectCompany, ProjectDesc, ProjectName, ProjectTech } from './projectStyles';
+import { ProjectCard, ProjectCompany, ProjectDesc, ProjectName, ProjectCover, ProjectTech, ProjectLink } from './projectStyles';
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyCqgQPeKJN8fLA1dQXCaiOr1-Yxof7CNv8",
@@ -22,7 +29,7 @@ const firebaseApp = initializeApp({
 
 export const Projects = () => {
   const [loaded, setLoaded] = useState(false)
-  const [projects, setProjects] = useState<{ [key: string]: any }[]>([]);
+  const [projects, setProjects] = useState<ProjectData[]>([]);
 
   //Firestore
   useEffect(() => {
@@ -39,7 +46,7 @@ export const Projects = () => {
     getProjects();
   }, [loaded]);
 
-  return(
+  return (
     <Swiper
       slidesPerView={1}
       spaceBetween={0}
@@ -53,11 +60,10 @@ export const Projects = () => {
           {projects.map((project: any, index) => (
             <SwiperSlide key={index}>
               <ProjectCard>
+                <ProjectCover style={{ backgroundImage: `url(${project.image || defaultCover})` }} >
 
-
-                <ProjectName>
-
-                    { 
+                  <ProjectName>
+                    {
                       (() => {
                         const name_split = project.name.split(/[ .]/);
                         const name1 = name_split.slice(0, -1).join(" ");
@@ -71,11 +77,7 @@ export const Projects = () => {
                       })()
                     }
 
-                  <img src={project.image} alt={project.name} />
-
-                </ProjectName>
-
-                {project.company ? (
+                    {project.company ? (
                       <>
                         <ProjectCompany href={project.companyLink} target="_blank">
                           <span className="txtWhite">Cliente: </span>
@@ -83,18 +85,30 @@ export const Projects = () => {
                         </ProjectCompany>
                       </>
                     ) : (<></>)}
+                  </ProjectName>
+                </ProjectCover>
 
-<ProjectTech>
-                    {project.tecs.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ProjectTech>
 
-                <ProjectDesc>
-                  <p>
-                    {project.desc}
-                  </p>
-                </ProjectDesc>
+
+                  <ProjectDesc>
+                    <>
+                      {project.desc.map((item: string, index: number) => (
+                        <p key={index}>{item}</p>
+                      ))}
+                    </>
+
+                    <p className="caption">TAGS:</p>
+                    <ProjectTech>
+                      {project.tecs.map((item: string, index: number) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ProjectTech>
+
+                    <ProjectLink href={project.link}>
+                      Acessar Projeto
+                      <ReactSVG src={Arrow} />
+                    </ProjectLink>
+                  </ProjectDesc>
               </ProjectCard>
             </SwiperSlide>
           ))}

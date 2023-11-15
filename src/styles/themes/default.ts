@@ -5,6 +5,7 @@ export const defaultTheme = {
     YELLOW  : '#E0B650',
     GREEN   : '#94A298',
     BLACK   : '#1A1A1C',
+    BLACK_OP   : '#1A1A1CD9',
     WHITE   : '#F1F1F1',
   },
 
