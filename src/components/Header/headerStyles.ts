@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 
 export const HeaderContainer = styled.header`
-  width: 100%;
+  background: ${props => props.theme.COLORS.BLACK};
+  width: calc(100% - 20px); //Largura do scroll personalizado
   padding: 1.5rem 2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -10,15 +11,21 @@ export const HeaderContainer = styled.header`
   gap: 1.5rem;
   position: fixed;
   top: 0;
-`
+  z-index: 10;
 
-export const HeaderLogo = styled.section`
-  svg{
-    height: 50px;
+  @media only screen and (max-width: 600px) {
+    width: 100vw;
+    padding: 1rem;
   }
 `
 
-export const HeaderLinks = styled.section`
+export const HeaderLogo = styled.div`
+  svg{
+    height: 40px;
+  }
+`
+
+export const HeaderLinks = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
@@ -27,14 +34,14 @@ export const HeaderLinks = styled.section`
 
 export const Link = styled.a`
   background: ${props => props.theme.COLORS.WHITE};
-  width: 45px;
-  height: 45px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   position: relative;
   transition: all ease-in-out .4s;
 
   &:hover{
-    box-shadow: 0 0 10px 4px ${props => props.theme.COLORS.YELLOW};
+    box-shadow: 0 0 8px 4px ${props => props.theme.COLORS.YELLOW};
 
     svg{
       fill: ${props => props.theme.COLORS.BROWN};
