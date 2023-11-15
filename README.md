@@ -1,27 +1,30 @@
-# React + TypeScript + Vite
+# Portfolio para DomaTech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido para teste como Front End na empresa Domatech
 
-Currently, two official plugins are available:
+## Instalção de Dependencias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para instalar rode um dos comandos abaixo:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```sh
+npm install
+npm i
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Servidor para Desenvolvimento
+
+Após a instalação das dependências, rode o seguinte comando:
+
+```sh
+npm run dev
+```
+
+## Desenvolvimento do Projeto
+
+O projeto foi desenvolvido utilzando React com Styled Components, para criação do slider dos projetos foi utilizado o plugin do Swiper.Js.
+
+Os projetos foram captados de uma base do Firebase, de forma a ser possível realizar futuramente uma atualização que permita administrar todos os projetos mais facilmente, em vez de adicionar no próprio painel do Firebase.
+
+Para a criação dos componentes foi seguido a base da metodologia BEM (Blocked Elements Modifier), onde cada elemento da página controla a nomeclatura dos seus filhos, facilitando a leitura dos componentes. Sua nomeclatura seguiu o padrão de Camel Case.
+
+Por conta do projeto utlizar apenas 4 ícones foi optado por utilzar o plugin React SVG para trabalhar diretamente com arquivos SVG em vez de instalar toda uma biblioteca de ícones, diminuindo o peso do projeto.
